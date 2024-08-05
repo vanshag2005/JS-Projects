@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Button Selection</title>
+    <style>
+        .selected {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button class="selectable">Button 1</button>
+    <button class="selectable">Button 2</button>
+    <button class="selectable">Button 3</button>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Get all buttons with the class 'selectable'
+    const buttons = document.querySelectorAll('.selectable');
+    //alert(buttons);
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove 'selected' class from all buttons
+            buttons.forEach(btn => btn.classList.remove('selected'));
+            // Add 'selected' class to the clicked button
+            button.classList.add('selected');
+        });
+    });
+});
+
+
+
+    </script>
+</body>
+</html>

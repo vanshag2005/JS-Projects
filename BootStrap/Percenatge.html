@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exam Marks Percentage Calculator</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: aliceblue;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.result {
+  background-color: #f2f2f2;
+  padding: 15px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+.result span {
+  font-weight: bold;
+}
+.thead
+{
+  width: 50vh;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Exam Marks Percentage Calculator</h1>
+
+  <div>
+    <label for="name">Enter your Name:</label>
+    <input type="text" id="name" value="A">
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Subject Name</th>
+        <th>Scored Marks</th>
+        <th>Total Marks</th>
+        <th><button onclick="addSubject()">Add Subject</button></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="text" value="English"></td>
+        <td><input type="text" value="98"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Hindi"></td>
+        <td><input type="text" value="92"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Maths"></td>
+        <td><input type="text" value="80"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="Science"></td>
+        <td><input type="text" value="78"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="SST"></td>
+        <td><input type="text" value="72"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+      <tr>
+        <td><input type="text" value="PE"></td>
+        <td><input type="text" value="70"></td>
+        <td><input type="text" value="100"></td>
+        <td><button onclick="deleteRow(this)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="result">
+    <span>Result of:</span> <span id="nameResult">A</span>
+    <span>Percentage:</span> <span id="percentage">81.67%</span>
+    <span>Total Scored:</span> <span id="totalScored">490</span>
+    <span>Total Marks:</span> <span id="totalMarks">600</span>
+    <button onclick="calculatePercentage()">Calculate</button>
+  </div>
+
+  <div class="result">
+    <span>Percentage:</span> <span id="finalPercentage">81.67%</span>
+  </div>
+
+</div>
+
+<script>
+function addSubject() {
+  var table = document.getElementsByTagName('tbody')[0];
+  var newRow = table.insertRow();
+  var cell1 = newRow.insertCell();
+  var cell2 = newRow.insertCell();
+  var cell3 = newRow.insertCell();
+  var cell4 = newRow.insertCell();
+  cell1.innerHTML = '<input type="text">';
+  cell2.innerHTML = '<input type="text">';
+  cell3.innerHTML = '<input type="text">';
+  cell4.innerHTML = '<button onclick="deleteRow(this)">Delete</button>';
+}
+
+function deleteRow(button) {
+  var row = button.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+  calculatePercentage();
+} 
+
+function calculatePercentage() {
+  var name = document.getElementById("name").value;
+  var totalScored = 0;
+  var totalMarks = 0;
+  var table = document.querySelector("table tbody");
+  var rows = table.rows;
+  for (var i = 0; i < rows.length; i++) {
+    var scoredMarks = parseInt(rows[i].cells[1].children[0].value);
+    var totalMark = parseInt(rows[i].cells[2].children[0].value);
+    totalScored += scoredMarks;
+    totalMarks += totalMark;
+  }
+  var percentage = (totalScored / totalMarks) * 100;
+  document.getElementById("nameResult").textContent = name;
+  document.getElementById("percentage").textContent = percentage.toFixed(2) + "%";
+  document.getElementById("totalScored").textContent = totalScored;
+  document.getElementById("totalMarks").textContent = totalMarks;
+  document.getElementById("finalPercentage").textContent = percentage.toFixed(2) + "%";
+}
+
+calculatePercentage(); // Initial calculation
+</script>
+</body>
+</html>

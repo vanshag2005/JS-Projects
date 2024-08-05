@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ar1=[2,3,4,5,6,6];
+        document.write("type of ar1 ="+typeof(ar1));
+        let ar2=new Array();
+        document.write("type of ar2 ="+typeof(ar2));
+        let month=["january","february"];
+
+        document.write("MONTH :     <select>");
+        for(let i=0;i<month.length;i++)
+            document.write(`<option value='${month[i]}'>${month[i]}</option>`);
+        document.write("</select>");
+        document.write("YEAR :     <select>");
+        for(let i=1990;i<2050;i++)
+            document.write(`<option value='${i}'>${i}</option>`);
+        document.write("</select>");
+        
+        </script>
+</body>
+</html>

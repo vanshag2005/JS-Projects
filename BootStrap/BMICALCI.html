@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="./css/bmistyle.css"/>
+</head>
+<body>
+    <div class="calculator">
+        <form id="bmiForm">
+            <label for="unitType">Unit Type:</label>
+            <select id="unitType" name="unitType">
+                <option value="us">US units</option>
+                <option value="metric">Metric units</option>
+            </select>
+            
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" value="24">
+            
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            
+            <label for="height">Height</label>
+            <input type="number" id="height" name="height" value="72"> inches
+            
+            <label for="weight">Weight</label>
+            <input type="number" id="weight" name="weight" value="140"> pounds
+            
+            <button type="button" onclick="calculateBMI()">Calculate</button>
+        </form>
+        <div class="result" id="bmiResult">
+            BMI = 18.99 kg/m² Normal
+        </div>
+    </div>
+
+    <div class="bmicat">
+
+        <h2>BMI Categories</h2>
+
+<table>
+    <tr>
+        <th>Weight Categories</th>
+        <th>BMI (kg/m<sup>2</sup>)</th>
+    </tr>
+    <tr class="underweight">
+        <td>Underweight</td>
+        <td>&lt; 18.5</td>
+    </tr>
+    <tr class="healthy">
+        <td>Healthy Weight</td>
+        <td>18.5 - 24.9</td>
+    </tr>
+    <tr class="overweight">
+        <td>Overweight</td>
+        <td>25 - 29.9</td>
+    </tr>
+    <tr class="obese1">
+        <td>Obese (Class I)</td>
+        <td>30 - 34.9</td>
+    </tr>
+    <tr class="obese2">
+        <td>Severely Obese (Class II)</td>
+        <td>35 - 39.9</td>
+    </tr>
+    <tr class="obese3">
+        <td>Morbidly Obese (Class III)</td>
+        <td>40 - 49.9</td>
+    </tr>
+    <tr class="super_obese">
+        <td>Super Obese (Class IV)</td>
+        <td>&gt; 50</td>
+    </tr>
+</table>
+
+    </div>
+</body>
+</html>
